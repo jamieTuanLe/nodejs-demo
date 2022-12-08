@@ -4,9 +4,22 @@ const listData = require("../../models/user/userInfo");
 const _ = require('lodash');
 
 
-router.get("/", (req, res) => {
-  res.json(listData);
-});
+router.get("/",(req, res) => {
+    res.json(listData);
+  });
+
+router.post("/create",(req, res) => {
+    const body = _.get(req, "body");
+
+    listData.push({
+      id: listData.length + 1,
+      name: body.name,
+      age: body.age,
+      role: body.role,
+    })
+
+    res.json({ status: "Created success"});
+  });
 
 router.route("/:id")
   .get((req, res) => {
@@ -37,6 +50,6 @@ router.route("/:id")
     }else {
       res.json("Id Not Found")
     }
-  })
+  });
 
 module.exports = router;
