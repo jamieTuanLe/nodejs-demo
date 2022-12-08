@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const listData = require("../../data/userInfo");
+const listData = require("../../models/user/userInfo");
 const _ = require('lodash');
 
 
